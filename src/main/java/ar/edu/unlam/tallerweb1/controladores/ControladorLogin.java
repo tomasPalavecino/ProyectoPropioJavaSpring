@@ -77,7 +77,7 @@ public class ControladorLogin {
 		ModelMap modelo = new ModelMap();
 			try{
 				this.servicioLogin.guardarUsuario(nuevoUsuario);
-				return irAHome(request);
+				return new ModelAndView("redirect:/home");
 			}
 			catch (usuarioExisteException | formNullException e){
 				modelo.put("mensajeDeError", e.getMessage());

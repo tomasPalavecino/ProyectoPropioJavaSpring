@@ -7,6 +7,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("repositorioEscuela")
 public class RepositorioEscuelaImpl implements RepositorioEscuela{
 
@@ -26,6 +28,11 @@ public class RepositorioEscuelaImpl implements RepositorioEscuela{
     public Escuela buscarEscuelaPorId(Long idEscuela) {
         return (Escuela) sessionFactory.getCurrentSession().createCriteria(Escuela.class)
                 .add(Restrictions.eq("id", idEscuela)).uniqueResult();
+    }
+
+    @Override
+    public List<Escuela> getEscuelas() {
+        return sessionFactory.getCurrentSession().createQuery("FROM Escuela", Escuela.class).getResultList();
     }
 
     @Override

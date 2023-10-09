@@ -13,10 +13,27 @@
 		</div>
 		<section>
 			<h3><b>Lista de escuelas</b></h3>
-			<a href="crearEscuela">Crear escuela</a>
-			<tbody>
-
-			</tbody>
+			<div class="d-block"><a href="crearEscuela">Crear escuela</a></div>
+			<div class="col-md-6">
+				<table class="table user-list">
+					<thead>
+					<tr>
+						<th class="text-center">Nombre</th>
+						<th class="text-center">Direccion</th>
+						<th class="text-center">Localidad</th>
+					</tr>
+					</thead>
+					<tbody>
+					<c:forEach items="${listaEscuelas}" var="escuela">
+						<tr>
+							<td class="text-center">${escuela.nombre}</td>
+							<td class="text-center">${escuela.direccion}</td>
+							<td class="text-center">${escuela.localidad}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</section>
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>

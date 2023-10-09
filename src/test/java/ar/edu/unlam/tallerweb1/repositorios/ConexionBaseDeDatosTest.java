@@ -5,6 +5,8 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.ModelAndView;
+
 import static org.assertj.core.api.Assertions.*;
 
 // Clase que prueba la conexion a la base de datos. Hereda de SpringTest por lo que corre dentro del contexto
@@ -13,7 +15,7 @@ public class ConexionBaseDeDatosTest extends SpringTest{
 
     @Test
     @Transactional @Rollback
-    public void pruebaConexion(){
+    public void pruebaConexion(ModelAndView mav){
         assertThat(session().isConnected()).isTrue();
     }
 

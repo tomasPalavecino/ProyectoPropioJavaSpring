@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("servicioEscuela")
 @Transactional
 public class ServicioEscuelaImpl implements ServicioEscuela{
@@ -40,6 +42,11 @@ public class ServicioEscuelaImpl implements ServicioEscuela{
     @Override
     public Escuela getEscuelaId(Long idEscuela) {
         return repoEscuela.buscarEscuelaPorId(idEscuela);
+    }
+
+    @Override
+    public List<Escuela> listarTodas() {
+        return this.repoEscuela.getEscuelas();
     }
 
     private void validarNuevaEscuela(DatosEscuelaDTO nuevaEscuela) throws escuelaExisteException {

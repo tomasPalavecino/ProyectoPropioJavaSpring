@@ -18,7 +18,6 @@ public class ControladorEscuela {
 
     private ServicioEscuela servicioEscuela;
 
-
     @Autowired
     public ControladorEscuela(ServicioEscuela servicioEscuela){
         this.servicioEscuela = servicioEscuela;
@@ -46,10 +45,8 @@ public class ControladorEscuela {
     }
 
     private ModelAndView irAHome(HttpServletRequest request) {
-        Long idEscuela = (Long) request.getSession().getAttribute("id");
-        Escuela escuela = servicioEscuela.getEscuelaId(idEscuela);
         ModelMap modelo = new ModelMap();
-        modelo.put("escuela", escuela);
+        modelo.put("listaEscuelas", this.servicioEscuela.listarTodas());
         return new ModelAndView("home", modelo);
     }
 
